@@ -96,7 +96,7 @@ public class Nicoc extends Agent {
         if (risorse[this.teamId] == 0)
             return Behaviour.EXPANSIVE;
         else if (risorse[this.teamId] > 3){
-            return Behaviour.DEFENSIVE;
+            return Behaviour.EXPANSIVE;
         }
         else if (risorse[this.teamId] > 6){
             return Behaviour.BERZERKER;
