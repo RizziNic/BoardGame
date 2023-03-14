@@ -6,7 +6,7 @@ import com.company.Agents.*;
 import java.awt.*;
 
 public class AgentFactory {
-    public static String [] warriors = {"Destex", "Davide", "Faso",  "Getal", "Fioccosplat", "IsoBot", "Telex", "ATX303"};
+    public static String [] warriors = {"Destex", "Davide", "Nicoc"}; //"Faso",  "Getal", "Fioccosplat", "IsoBot", "Telex", "ATX303"};
 
     // public Agent(int teamId, Color color, int x, int y)
     public static Agent buildAgent(String name,int teamId, Color color, int x, int y){
@@ -17,6 +17,7 @@ public class AgentFactory {
                 return new Agent(teamId, color, x, y);
             case "Davide":
                 return new Davide(teamId,  color,  x,  y);
+            /*
             case "Fioccosplat":
                 return new Fioccosplat(teamId,  color,  x,  y);
             case "Getal":
@@ -30,6 +31,9 @@ public class AgentFactory {
             case "ATX303":
                 return new ATX303(teamId,  color,  x,  y);
 
+             */
+            case "Nicoc" :
+                return new Nicoc(teamId, color, x, y);
         }
 
         return null;
@@ -43,6 +47,7 @@ public class AgentFactory {
                 return new Agent(teamId);
             case "Davide":
                 return new Davide(teamId);
+            /*
             case "Getal":
                 return new Getal(teamId);
             case "Fioccosplat":
@@ -55,6 +60,10 @@ public class AgentFactory {
                 return new Telex(teamId);
             case "ATX303":
                 return new ATX303(teamId);
+
+             */
+            case "Nicoc" :
+                return new Nicoc(teamId);
         }
 
         return null;

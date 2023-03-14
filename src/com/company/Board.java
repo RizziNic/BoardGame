@@ -17,7 +17,7 @@ import static zuclib.GraficaSemplice.*;
 public class Board {
 
     static boolean DEBUG = false;
-    static boolean GRAPHICS = false;
+    static boolean GRAPHICS = true;
 
     static int teamNumber = AgentFactory.warriors.length;
     static int[] teams = new int[teamNumber];
