@@ -1,0 +1,8 @@
+- attuazione upgrade (eseguita da engine) (es: sostituire istanza di DesteX con Destex_Healer).
+  Da fare contestualmenbte a parte di spawning.
+  L'update avviene se Agente emette 'w' (Healer) o 'q'  per Shooter
+
+- implementazione parte di combattimento / healing
+    -> logiche di 'cura' (max dist: 1)
+    -> logiche di 'attacco remoto' (danno proporzionale a distanza?)
+
