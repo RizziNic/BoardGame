@@ -3,6 +3,7 @@ package com.company.Agents;
 import com.company.Agents.Agent;
 import com.company.Board;
 import com.company.Cell;
+import com.company.Game;
 import com.company.Sensor;
 
 import java.awt.*;
@@ -89,26 +90,47 @@ public class Nicoc extends Agent {
         return ' ';
     }
 
-    public Agent.Behaviour ComputeCurrentState(){
-
+    public Agent.Behaviour ComputeCurrentState(Agent[] agents){
         int []risorse = Sensor.Risorse(Board.getAgents(), Board.getBoard());
 
-        if (risorse[this.teamId] == 0)
+        if (risorse[this.teamId] < Board.getResources() && this == agents[principale(agents)]) {
+            if (Game.getTurno() <= 20)
+                return Behaviour.DEFENSIVE;
             return Behaviour.EXPANSIVE;
-        else if (risorse[this.teamId] > 3){
+        }else if (this.health >= Sensor.vitaMedia(this, agents) && this != agents[principale(agents)]){
+            return Behaviour.BERZERKER;
+        }else if (risorse[this.teamId] == Board.getResources() && this.health < Sensor.vitaMedia(this, agents) && this == agents[principale(agents)]){
+
+            return Behaviour.DEFENSIVE;
+        }
+        if (risorse[this.teamId] < Board.getResources() && this.health < 25 && this != agents[principale(agents)]){
             return Behaviour.EXPANSIVE;
         }
-        else if (risorse[this.teamId] > 6){
+        if (this == agents[principale(agents)]){
+            return Behaviour.DEFENSIVE;
+        }else {
             return Behaviour.BERZERKER;
         }
-        return Behaviour.BERZERKER;
+    }
+
+    public int principale(Agent[] agents){
+        for (int i = 0; i < agents.length; i++){
+            if (agents[i].teamId == this.teamId){
+                return i;
+            }
+        }
+        return 0;
     }
 
     @Override
     public char move(Cell[][] theBoard, Agent[] agents) {
-        //System.out.println("Nicoc MOVING");
-        this.mood = ComputeCurrentState();
-        return  Strategy(agents);
+        if(!cheats) {
+            this.mood = ComputeCurrentState(agents);
+            return Strategy(agents);
+        }else{
+            this.mood = Behaviour.BERZERKER;
+            return Strategy(agents);
+        }
         //return 'o';
     }
 
