@@ -54,7 +54,7 @@ public class Board {
         cellWidth = 1 / (double) width;
         cellHeight = 1 / (double) height;
         if (GRAPHICS) {
-            GraficaSemplice.setFinestra(pxWidth, pxHeight, "Game of 3ID");
+            GraficaSemplice.setFinestra(pxWidth, pxHeight, "Game of 3IC");
         }
         // initialize agents
         for (int a = 0; a < agents.length; a++) {
